@@ -2,6 +2,8 @@
 
 > A zero-dependency, TypeScript-native date utility library — smart formatting, business logic, i18n, and intelligent parsing in under 2 KB (gzipped).
 
+📖 **[Full documentation →](https://GourangaDasSamrat.github.io/date-wiz-docs)**
+
 [![npm version](https://img.shields.io/npm/v/date-wiz)](https://www.npmjs.com/package/date-wiz)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/date-wiz)](https://bundlephobia.com/package/date-wiz)
 [![license](https://img.shields.io/npm/l/date-wiz)](./LICENSE)
