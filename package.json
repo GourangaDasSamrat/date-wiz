@@ -2,11 +2,18 @@
   "name": "date-wiz",
   "version": "1.0.0",
   "description": "A zero-dependency, TypeScript-native date utility library with smart formatting, business logic, and i18n support.",
-  "author": "GourangaDasSamrat",
+  "author": {
+    "name": "GourangaDasSamrat",
+    "email": "gouranga.samrat@gmail.com",
+    "url": "https://github.com/GourangaDasSamrat"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/GourangaDasSamrat/date-wiz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GourangaDasSamrat/date-wiz/issues"
   },
   "homepage": "https://GourangaDasSamrat.github.io/date-wiz-docs",
   "keywords": [
