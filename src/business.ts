@@ -2,8 +2,12 @@
 //  date-wiz — Business Day Utilities
 // ─────────────────────────────────────────────
 
-import type { DateInput, BusinessDayOptions, WorkingHoursOptions } from './types.js';
-import { toDate, isValid, clone, toDateKey } from './utils.js';
+import type {
+  DateInput,
+  BusinessDayOptions,
+  WorkingHoursOptions,
+} from "./types.js";
+import { toDate, isValid, clone, toDateKey } from "./utils.js";
 
 const DEFAULT_WORK_DAYS = [1, 2, 3, 4, 5]; // Mon–Fri
 
@@ -35,12 +39,12 @@ export function addBusinessDays(
   if (!isValid(d)) return d;
 
   const { holidays = [] } = options;
-  const workDays   = DEFAULT_WORK_DAYS;
+  const workDays = DEFAULT_WORK_DAYS;
   const holidaySet = new Set(holidays);
 
-  const result  = clone(d);
-  const step    = days >= 0 ? 1 : -1;
-  let   remaining = Math.abs(days);
+  const result = clone(d);
+  const step = days >= 0 ? 1 : -1;
+  let remaining = Math.abs(days);
 
   while (remaining > 0) {
     result.setDate(result.getDate() + step);
@@ -76,15 +80,15 @@ export function countBusinessDays(
   options: BusinessDayOptions = {},
 ): number {
   const start = toDate(from);
-  const end   = toDate(to);
+  const end = toDate(to);
   if (!isValid(start) || !isValid(end)) return NaN;
 
   const { holidays = [] } = options;
-  const workDays   = DEFAULT_WORK_DAYS;
+  const workDays = DEFAULT_WORK_DAYS;
   const holidaySet = new Set(holidays);
 
   const [a, b] = start <= end ? [start, end] : [end, start];
-  const sign   = start <= end ? 1 : -1;
+  const sign = start <= end ? 1 : -1;
 
   let count = 0;
   const cur = clone(a);
@@ -113,19 +117,19 @@ export function isWithinWorkingHours(
   if (!isValid(d)) return false;
 
   const {
-    start    = '09:00',
-    end      = '17:00',
+    start = "09:00",
+    end = "17:00",
     workDays = DEFAULT_WORK_DAYS,
   } = options;
 
   if (!workDays.includes(d.getDay())) return false;
 
-  const [startH, startM] = start.split(':').map(Number);
-  const [endH,   endM  ] = end.split(':').map(Number);
+  const [startH, startM] = start.split(":").map(Number);
+  const [endH, endM] = end.split(":").map(Number);
 
-  const nowMins   = d.getHours() * 60 + d.getMinutes();
+  const nowMins = d.getHours() * 60 + d.getMinutes();
   const startMins = startH * 60 + startM;
-  const endMins   = endH   * 60 + endM;
+  const endMins = endH * 60 + endM;
 
   return nowMins >= startMins && nowMins < endMins;
 }

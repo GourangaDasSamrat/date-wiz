@@ -2,12 +2,18 @@
 //  date-wiz — wiz() Chainable Factory
 // ─────────────────────────────────────────────
 
-import type { DateInput, DurationUnit, WizInstance, SmartFormatOptions, RelativeTimeOptions } from './types.js';
-import { toDate, isValid, clone } from './utils.js';
-import { format as _format } from './format.js';
-import { smartFormat as _smartFormat } from './smart.js';
-import { getRelativeTime } from './relative.js';
-import { add, subtract } from './arithmetic.js';
+import type {
+  DateInput,
+  DurationUnit,
+  WizInstance,
+  SmartFormatOptions,
+  RelativeTimeOptions,
+} from "./types.js";
+import { toDate, isValid, clone } from "./utils.js";
+import { format as _format } from "./format.js";
+import { smartFormat as _smartFormat } from "./smart.js";
+import { getRelativeTime } from "./relative.js";
+import { add, subtract } from "./arithmetic.js";
 
 function createWiz(date: Date): WizInstance {
   // We store an internal immutable copy
@@ -38,7 +44,7 @@ function createWiz(date: Date): WizInstance {
       return createWiz(next);
     },
 
-    format(token = 'YYYY-MM-DDTHH:mm:ss', locale?: string): string {
+    format(token = "YYYY-MM-DDTHH:mm:ss", locale?: string): string {
       return _format(_d, token, locale);
     },
 
@@ -76,7 +82,7 @@ export function wiz(input?: DateInput): WizInstance {
 
   // Lazy-import parse to keep the main wiz() function tree-shakable
   // but still support string parsing in chainable mode.
-  if (typeof input === 'string') {
+  if (typeof input === "string") {
     // Dynamic require would break tree-shaking; inline a minimal fast path
     const d = toDate(input);
     return createWiz(isValid(d) ? d : new Date());

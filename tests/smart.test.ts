@@ -1,19 +1,19 @@
 // tests/smart.test.ts
-import { smartFormat } from '../src/smart.js';
+import { smartFormat } from "../src/smart.js";
 
-describe('smartFormat()', () => {
+describe("smartFormat()", () => {
   test('today returns "Today at ..."', () => {
     const result = smartFormat(new Date());
-    expect(result.toLowerCase()).toContain('today');
+    expect(result.toLowerCase()).toContain("today");
   });
 
   test('yesterday returns "Yesterday at ..."', () => {
     const yesterday = new Date(Date.now() - 86_400_000);
     const result = smartFormat(yesterday);
-    expect(result.toLowerCase()).toContain('yesterday');
+    expect(result.toLowerCase()).toContain("yesterday");
   });
 
-  test('this week returns weekday name', () => {
+  test("this week returns weekday name", () => {
     // 3 days ago (still within the week window if not crossing yesterday)
     const threeDaysAgo = new Date(Date.now() - 3 * 86_400_000);
     const result = smartFormat(threeDaysAgo);
@@ -27,21 +27,21 @@ describe('smartFormat()', () => {
     expect(result).toMatch(/Jan/i);
   });
 
-  test('past year returns long format with year', () => {
-    const oldDate = new Date('2020-03-15');
+  test("past year returns long format with year", () => {
+    const oldDate = new Date("2020-03-15");
     const result = smartFormat(oldDate);
-    expect(result).toContain('2020');
+    expect(result).toContain("2020");
   });
 
-  test('returns fallback for invalid date', () => {
-    const result = smartFormat('not-a-date', { fallback: '--' });
-    expect(result).toBe('--');
+  test("returns fallback for invalid date", () => {
+    const result = smartFormat("not-a-date", { fallback: "--" });
+    expect(result).toBe("--");
   });
 
-  test('accepts custom labels', () => {
+  test("accepts custom labels", () => {
     const result = smartFormat(new Date(), {
-      labels: { todayAt: 'Hoje às', yesterdayAt: 'Ontem às' },
+      labels: { todayAt: "Hoje às", yesterdayAt: "Ontem às" },
     });
-    expect(result).toContain('Hoje às');
+    expect(result).toContain("Hoje às");
   });
 });

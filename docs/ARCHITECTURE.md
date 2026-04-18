@@ -92,11 +92,11 @@ Month names, weekday names, and relative time phrases are all produced by the bu
 
 ### Three output formats
 
-| Format | Location | Used by |
-|---|---|---|
-| ESM | `dist/esm/` | Bundlers (Vite, webpack, Rollup) |
-| CJS | `dist/cjs/` | Node.js `require()` |
-| Types | `dist/types/` | TypeScript compiler |
+| Format | Location      | Used by                          |
+| ------ | ------------- | -------------------------------- |
+| ESM    | `dist/esm/`   | Bundlers (Vite, webpack, Rollup) |
+| CJS    | `dist/cjs/`   | Node.js `require()`              |
+| Types  | `dist/types/` | TypeScript compiler              |
 
 Each `dist/esm/` and `dist/cjs/` directory contains a `package.json` with `"type": "module"` or `"type": "commonjs"` respectively, so Node resolves them correctly without needing `"type": "module"` in the root `package.json`.
 

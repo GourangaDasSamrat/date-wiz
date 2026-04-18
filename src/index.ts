@@ -16,17 +16,17 @@
 // ─────────────────────────────────────────────
 
 // Chainable factory
-export { wiz } from './wiz.js';
+export { wiz } from "./wiz.js";
 
 // Formatting
-export { format } from './format.js';
-export { smartFormat } from './smart.js';
+export { format } from "./format.js";
+export { smartFormat } from "./smart.js";
 
 // Relative time
-export { getRelativeTime } from './relative.js';
+export { getRelativeTime } from "./relative.js";
 
 // Parsing
-export { parse } from './parse.js';
+export { parse } from "./parse.js";
 
 // Arithmetic
 export {
@@ -39,7 +39,7 @@ export {
   clampDate,
   startOf,
   endOf,
-} from './arithmetic.js';
+} from "./arithmetic.js";
 
 // Business days
 export {
@@ -48,7 +48,7 @@ export {
   countBusinessDays,
   isWithinWorkingHours,
   checkIsBusinessDay,
-} from './business.js';
+} from "./business.js";
 
 // Types (re-exported for library consumers)
 export type {
@@ -64,4 +64,4 @@ export type {
   DurationUnit,
   WizInstance,
   InvalidDateFallback,
-} from './types.js';
+} from "./types.js";

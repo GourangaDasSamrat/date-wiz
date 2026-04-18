@@ -2,7 +2,7 @@
 //  date-wiz — Internal Utilities (not exported)
 // ─────────────────────────────────────────────
 
-import type { DateInput } from './types.js';
+import type { DateInput } from "./types.js";
 
 /**
  * Coerce any DateInput to a Date.
@@ -10,9 +10,9 @@ import type { DateInput } from './types.js';
  */
 export function toDate(input: DateInput): Date {
   if (input instanceof Date) return new Date(input.getTime());
-  if (typeof input === 'number') return new Date(input);
+  if (typeof input === "number") return new Date(input);
   // String: let the runtime parse, but normalise common separators first
-  const normalised = String(input).trim().replace(/\//g, '-');
+  const normalised = String(input).trim().replace(/\//g, "-");
   return new Date(normalised);
 }
 
@@ -23,7 +23,7 @@ export function isValid(d: Date): boolean {
 
 /** Zero-pad a number to `width` digits. */
 export function pad(n: number, width = 2): string {
-  return String(n).padStart(width, '0');
+  return String(n).padStart(width, "0");
 }
 
 /** Clone a Date — the single point where we guarantee immutability. */
@@ -40,13 +40,15 @@ export function pickRelUnit(
 ): [number, Intl.RelativeTimeFormatUnit] {
   const abs = Math.abs(totalSeconds);
 
-  if (abs < 60) return [Math.round(totalSeconds), 'second'];
-  if (abs < 3600) return [Math.round(totalSeconds / 60), 'minute'];
-  if (abs < 86_400) return [Math.round(totalSeconds / 3600), 'hour'];
-  if (abs < 86_400 * 7) return [Math.round(totalSeconds / 86_400), 'day'];
-  if (abs < 86_400 * 30) return [Math.round(totalSeconds / (86_400 * 7)), 'week'];
-  if (abs < 86_400 * 365) return [Math.round(totalSeconds / (86_400 * 30)), 'month'];
-  return [Math.round(totalSeconds / (86_400 * 365)), 'year'];
+  if (abs < 60) return [Math.round(totalSeconds), "second"];
+  if (abs < 3600) return [Math.round(totalSeconds / 60), "minute"];
+  if (abs < 86_400) return [Math.round(totalSeconds / 3600), "hour"];
+  if (abs < 86_400 * 7) return [Math.round(totalSeconds / 86_400), "day"];
+  if (abs < 86_400 * 30)
+    return [Math.round(totalSeconds / (86_400 * 7)), "week"];
+  if (abs < 86_400 * 365)
+    return [Math.round(totalSeconds / (86_400 * 30)), "month"];
+  return [Math.round(totalSeconds / (86_400 * 365)), "year"];
 }
 
 /** Normalize a YYYY-MM-DD string for holiday comparisons. */

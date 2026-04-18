@@ -81,7 +81,7 @@ export interface SmartFormatOptions {
 }
 
 export interface SmartFormatLabels {
-  todayAt: string;    // "Today at"
+  todayAt: string; // "Today at"
   yesterdayAt: string; // "Yesterday at"
 }
 
@@ -116,15 +116,23 @@ export interface ParseOptions {
 // ── Duration unit ─────────────────────────────
 
 export type DurationUnit =
-  | 'milliseconds' | 'ms'
-  | 'seconds'      | 's'
-  | 'minutes'      | 'm'
-  | 'hours'        | 'h'
-  | 'days'         | 'd'
-  | 'weeks'        | 'w'
-  | 'months'       | 'M'
-  | 'years'        | 'y'
-  | 'businessDays';
+  | "milliseconds"
+  | "ms"
+  | "seconds"
+  | "s"
+  | "minutes"
+  | "m"
+  | "hours"
+  | "h"
+  | "days"
+  | "d"
+  | "weeks"
+  | "w"
+  | "months"
+  | "M"
+  | "years"
+  | "y"
+  | "businessDays";
 
 // ── Chainable Wiz instance ────────────────────
 

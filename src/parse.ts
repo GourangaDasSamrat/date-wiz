@@ -2,13 +2,18 @@
 //  date-wiz — parse()
 // ─────────────────────────────────────────────
 
-import type { DateInput, ParseOptions } from './types.js';
-import { toDate, isValid, clone } from './utils.js';
+import type { DateInput, ParseOptions } from "./types.js";
+import { toDate, isValid, clone } from "./utils.js";
 
 /** Named-day map for "next_monday" style strings. */
 const DAY_NAMES: Record<string, number> = {
-  sunday: 0, monday: 1, tuesday: 2, wednesday: 3,
-  thursday: 4, friday: 5, saturday: 6,
+  sunday: 0,
+  monday: 1,
+  tuesday: 2,
+  wednesday: 3,
+  thursday: 4,
+  friday: 5,
+  saturday: 6,
 };
 
 /**
@@ -20,24 +25,30 @@ const PATTERNS: Array<(s: string) => Date | null> = [
   (s) => {
     const m = s.match(/^([+-])(\d+)\s*(ms|s|m|h|d|w|M|y)$/);
     if (!m) return null;
-    const sign   = m[1] === '+' ? 1 : -1;
+    const sign = m[1] === "+" ? 1 : -1;
     const amount = parseInt(m[2], 10) * sign;
-    const unit   = m[3];
-    const now    = new Date();
+    const unit = m[3];
+    const now = new Date();
 
     switch (unit) {
-      case 'ms': return new Date(now.getTime() + amount);
-      case 's':  return new Date(now.getTime() + amount * 1000);
-      case 'm':  return new Date(now.getTime() + amount * 60_000);
-      case 'h':  return new Date(now.getTime() + amount * 3_600_000);
-      case 'd':  return new Date(now.getTime() + amount * 86_400_000);
-      case 'w':  return new Date(now.getTime() + amount * 604_800_000);
-      case 'M': {
+      case "ms":
+        return new Date(now.getTime() + amount);
+      case "s":
+        return new Date(now.getTime() + amount * 1000);
+      case "m":
+        return new Date(now.getTime() + amount * 60_000);
+      case "h":
+        return new Date(now.getTime() + amount * 3_600_000);
+      case "d":
+        return new Date(now.getTime() + amount * 86_400_000);
+      case "w":
+        return new Date(now.getTime() + amount * 604_800_000);
+      case "M": {
         const d = new Date(now);
         d.setMonth(d.getMonth() + amount);
         return d;
       }
-      case 'y': {
+      case "y": {
         const d = new Date(now);
         d.setFullYear(d.getFullYear() + amount);
         return d;
@@ -50,15 +61,15 @@ const PATTERNS: Array<(s: string) => Date | null> = [
   (s) => {
     const m = s.match(/^(next|last)_(\w+)$/i);
     if (!m) return null;
-    const direction = m[1].toLowerCase() as 'next' | 'last';
-    const target    = DAY_NAMES[m[2].toLowerCase()];
+    const direction = m[1].toLowerCase() as "next" | "last";
+    const target = DAY_NAMES[m[2].toLowerCase()];
     if (target === undefined) return null;
 
-    const now    = new Date();
+    const now = new Date();
     const curDay = now.getDay();
-    let   delta  = target - curDay;
+    let delta = target - curDay;
 
-    if (direction === 'next') {
+    if (direction === "next") {
       if (delta <= 0) delta += 7;
     } else {
       if (delta >= 0) delta -= 7;
@@ -79,14 +90,18 @@ const PATTERNS: Array<(s: string) => Date | null> = [
     const m = s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})$/);
     if (!m) return null;
     // Interpret as DD-MM-YYYY
-    return new Date(`${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}`);
+    return new Date(
+      `${m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`,
+    );
   },
 
   // ── YYYY-MM-DD or YYYY/MM/DD ──────────────────────────────────────────────
   (s) => {
     const m = s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})$/);
     if (!m) return null;
-    return new Date(`${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}`);
+    return new Date(
+      `${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}`,
+    );
   },
 
   // ── "May 15" / "15 May" / "May 15, 2024" ─────────────────────────────────
@@ -120,11 +135,14 @@ const PATTERNS: Array<(s: string) => Date | null> = [
  * parse('next_monday')    // next Monday
  * parse('15-05-2024')     // Date(2024-05-15)
  */
-export function parse(input: DateInput, options: ParseOptions = {}): Date | null {
+export function parse(
+  input: DateInput,
+  options: ParseOptions = {},
+): Date | null {
   const { fallback = null } = options;
 
   // Pass-through for Date and number inputs
-  if (typeof input !== 'string') {
+  if (typeof input !== "string") {
     const d = toDate(input);
     return isValid(d) ? d : (fallback as null);
   }

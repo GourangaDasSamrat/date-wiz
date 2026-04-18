@@ -4,10 +4,10 @@
 
 Only the latest published version on npm receives security fixes.
 
-| Version | Supported |
-|---|---|
-| Latest (`1.x`) | ✅ |
-| Older versions | ❌ |
+| Version        | Supported |
+| -------------- | --------- |
+| Latest (`1.x`) | ✅        |
+| Older versions | ❌        |
 
 ---
 
@@ -30,11 +30,11 @@ Include the following in your report:
 
 ## Response Timeline
 
-| Stage | Target time |
-|---|---|
-| Acknowledgement of your report | Within **48 hours** |
-| Confirmed / not confirmed | Within **5 business days** |
-| Patch released (if confirmed) | Within **14 days** of confirmation |
+| Stage                          | Target time                        |
+| ------------------------------ | ---------------------------------- |
+| Acknowledgement of your report | Within **48 hours**                |
+| Confirmed / not confirmed      | Within **5 business days**         |
+| Patch released (if confirmed)  | Within **14 days** of confirmation |
 
 You will be credited in the release notes unless you request otherwise.
 
