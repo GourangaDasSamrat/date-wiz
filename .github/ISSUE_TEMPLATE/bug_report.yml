@@ -1,0 +1,93 @@
+name: Bug Report
+description: Report a bug to help us improve
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please fill out the form below to help us investigate and fix it.
+
+  - type: dropdown
+    id: which_function
+    attributes:
+      label: Which function(s) are affected?
+      description: Select the function(s) that have the issue
+      multiple: true
+      options:
+        - format()
+        - parse()
+        - wiz()
+        - getRelativeTime()
+        - smartFormat()
+        - Business day logic
+        - i18n/localization
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: date-wiz version
+      description: "Run: npm list date-wiz"
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: node_version
+    attributes:
+      label: Node.js version
+      description: "Run: node -v"
+      placeholder: "v18.0.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "A clear and concise description of the bug"
+      placeholder: "What happened? What did you expect to happen?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction code
+      description: "Provide a minimal code snippet that reproduces the issue"
+      render: typescript
+      placeholder: |
+        import { wiz, format } from 'date-wiz';
+
+        const result = /* your code here */;
+        console.log(result); // unexpected output
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: "What should happen instead?"
+      placeholder: "The result should be..."
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: "Any other relevant info (environment, system, etc.)?"
+      placeholder: "OS: Linux, Browser: Chrome, etc."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Verification
+      options:
+        - label: I have read the [documentation](https://GourangaDasSamrat.github.io/date-wiz-docs)
+        - label: This issue is not a duplicate of an existing issue
+          required: true
+        - label: I agree to the [Code of Conduct](../docs/CODE_OF_CONDUCT.md)
+          required: true
