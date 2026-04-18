@@ -1,0 +1,58 @@
+name: Documentation Issue
+description: Report missing, unclear, or incorrect documentation
+labels: ["documentation"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us improve our documentation!
+
+  - type: dropdown
+    id: doc_type
+    attributes:
+      label: Documentation type
+      options:
+        - "README"
+        - "API Reference"
+        - "Code examples"
+        - "CONTRIBUTING guide"
+        - "ARCHITECTURE document"
+        - "Official docs site"
+        - "Type definitions / JSDoc"
+        - "Other"
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location of the issue
+      description: "File path, URL, or section name"
+      placeholder: "docs/CONTRIBUTING.md or https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is the problem?
+      description: "Is it missing, unclear, outdated, or incorrect?"
+      placeholder: "The documentation is unclear about... / Missing information on..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: "How could this be improved?"
+      placeholder: "Could add an example showing... or clarify that..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Verification
+      options:
+        - label: I agree to the [Code of Conduct](../docs/CODE_OF_CONDUCT.md)
+          required: true
