@@ -1,0 +1,75 @@
+name: Feature Request
+description: Suggest an idea or enhancement
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement! Please help us understand your feature request.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem you're trying to solve
+      description: "What pain point or limitation does this feature address?"
+      placeholder: "I need to... but currently..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed solution or API
+      description: "How should this work? What would the API look like?"
+      render: typescript
+      placeholder: |
+        import { wiz } from 'date-wiz';
+
+        const result = /* your proposed API */;
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative approaches
+      description: "Are there other ways to solve this problem?"
+      placeholder: "Option A: ... Option B: ..."
+
+  - type: dropdown
+    id: dependencies
+    attributes:
+      label: Would this require new dependencies?
+      description: "date-wiz is zero-dependency by design"
+      options:
+        - "No, it can be done with native JavaScript"
+        - "Unsure"
+        - "Yes (please describe below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies_context
+    attributes:
+      label: Dependency context
+      description: "If a new dependency is needed, explain why"
+      placeholder: "This library is the only way to..."
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: "Links to issues, discussions, or external context"
+      placeholder: "Related to #123, inspired by dayjs feature X"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Verification
+      options:
+        - label: I have read the [documentation](https://GourangaDasSamrat.github.io/date-wiz-docs)
+        - label: This feature is not already requested in an open issue
+          required: true
+        - label: I agree to the [Code of Conduct](../.github/CODE_OF_CONDUCT.md)
+          required: true
